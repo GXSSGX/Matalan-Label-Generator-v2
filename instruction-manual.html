@@ -31,7 +31,6 @@
             background-color: #e2e8f0;
             color: var(--text-main);
             line-height: 1.4;
-            /* Reduced from 1.6 */
             padding: 2rem;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
@@ -112,6 +111,19 @@
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
+            
+            /* 修正标签页面的打印样式 */
+            .label-page {
+                box-shadow: none !important;
+                margin: 0 !important;
+                page-break-after: auto;
+                page-break-inside: avoid;
+            }
+            
+            .label-container {
+                display: flex !important;
+                gap: 2mm !important;
+            }
         }
 
         /* A4 Page Styling - 210mm x 297mm */
@@ -122,7 +134,41 @@
             margin: 0 auto 2rem auto;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
             padding: 10mm 15mm;
-            /* Reduced padding */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 新增：标签页面样式 */
+        .label-page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            margin: 0 auto 2rem auto;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 新增：标签容器样式 */
+        .label-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 2mm; /* 关键：2mm裁切间隙 */
+            width: 210mm;
+            height: 297mm;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 新增：单个A5标签样式 */
+        .label-a5 {
+            width: 104mm; /* 210mm - 2mm间隙 = 208mm，每边104mm */
+            height: 297mm;
+            background: white;
+            border: 1px solid #000; /* 明确边框，便于裁切 */
+            box-sizing: border-box;
+            padding: 8mm; /* 内容留白 */
             position: relative;
             overflow: hidden;
         }
@@ -132,9 +178,7 @@
             background: var(--primary);
             color: white;
             padding: 1rem 1.5rem;
-            /* Reduced padding */
-            margin: -10mm -15mm 1rem -15mm;
-            /* Adjusted margins */
+            margin: 0 -8mm 1rem -8mm; /* 调整为标签内的padding */
             position: relative;
         }
 
@@ -146,27 +190,23 @@
 
         .header-text h1 {
             font-size: 1.2rem;
-            /* Reduced font size */
             font-weight: 800;
             margin-bottom: 0;
         }
 
         .header-text p {
             font-size: 0.75rem;
-            /* Reduced font size */
             color: #ffffff;
             opacity: 1;
         }
 
         .header-logo img {
             height: 32px;
-            /* Reduced logo size */
         }
 
         /* Section Styling */
         .section {
             margin-bottom: 0.8rem;
-            /* Reduced margin */
         }
 
         .section-number {
@@ -174,15 +214,12 @@
             align-items: center;
             justify-content: center;
             width: 20px;
-            /* Reduced size */
             height: 20px;
-            /* Reduced size */
             background: var(--primary);
             color: white;
             border-radius: 50%;
             font-weight: 700;
             font-size: 0.65rem;
-            /* Reduced font size */
             margin-right: 0.4rem;
         }
 
@@ -190,18 +227,15 @@
             display: flex;
             align-items: center;
             font-size: 0.9rem;
-            /* Reduced font size */
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.5rem;
-            /* Reduced margin */
             padding-bottom: 0.2rem;
             border-bottom: 2px solid var(--border);
         }
 
         h3 {
             font-size: 0.8rem;
-            /* Reduced font size */
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 0.3rem;
@@ -210,10 +244,8 @@
 
         p {
             margin-bottom: 0.3rem;
-            /* Reduced margin */
             color: var(--text-main);
             font-size: 0.75rem;
-            /* Reduced font size */
         }
 
         ul {
@@ -224,7 +256,6 @@
         li {
             margin-bottom: 0.2rem;
             font-size: 0.7rem;
-            /* Reduced font size */
         }
 
         li strong {
@@ -243,27 +274,22 @@
             background: #eff6ff;
             border-left: 3px solid var(--primary);
             padding: 0.4rem 0.6rem;
-            /* Reduced padding */
             border-radius: 0 4px 4px 0;
             margin: 0.5rem 0;
-            /* Reduced margin */
         }
 
         .info-box p {
             color: var(--primary);
             margin-bottom: 0;
             font-size: 0.7rem;
-            /* Reduced font size */
         }
 
         .important-box {
             background: #fef3c7;
             border-left: 3px solid #f59e0b;
             padding: 0.4rem 0.6rem;
-            /* Reduced padding */
             border-radius: 0 4px 4px 0;
             margin: 0.5rem 0;
-            /* Reduced margin */
         }
 
         .important-box .box-title {
@@ -271,14 +297,12 @@
             color: #92400e;
             margin-bottom: 0.1rem;
             font-size: 0.7rem;
-            /* Reduced font size */
         }
 
         .important-box p {
             color: #78350f;
             margin-bottom: 0;
             font-size: 0.7rem;
-            /* Reduced font size */
         }
 
         .size-decision-box {
@@ -286,9 +310,7 @@
             border: 2px solid var(--border);
             border-radius: 6px;
             padding: 0.6rem;
-            /* Reduced padding */
             margin: 0.6rem 0;
-            /* Reduced margin */
         }
 
         .size-decision-title {
@@ -303,7 +325,6 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0.6rem;
-            /* Reduced gap */
         }
 
         .size-option {
@@ -311,7 +332,6 @@
             border: 2px solid var(--border);
             border-radius: 6px;
             padding: 0.5rem;
-            /* Reduced padding */
             text-align: center;
         }
 
@@ -326,11 +346,9 @@
         .size-option-label {
             display: inline-block;
             padding: 0.15rem 0.5rem;
-            /* Reduced padding */
             border-radius: 99px;
             font-weight: 700;
             font-size: 0.7rem;
-            /* Reduced font size */
             margin-bottom: 0.3rem;
         }
 
@@ -346,7 +364,6 @@
 
         .size-option-dimension {
             font-size: 0.9rem;
-            /* Reduced font size */
             font-weight: 800;
             color: var(--text-main);
             margin-bottom: 0.1rem;
@@ -354,7 +371,6 @@
 
         .size-option-condition {
             font-size: 0.65rem;
-            /* Reduced font size */
             color: var(--text-muted);
             font-weight: 500;
         }
@@ -365,7 +381,6 @@
 
         .instructions-image-container {
             margin: 0.5rem 0;
-            /* Reduced margin */
             border: 1px solid var(--border);
             border-radius: 6px;
             overflow: hidden;
@@ -381,11 +396,8 @@
         .step {
             display: flex;
             gap: 0.5rem;
-            /* Reduced gap */
             margin-bottom: 0.5rem;
-            /* Reduced margin */
             padding: 0.5rem;
-            /* Reduced padding */
             background: var(--bg-light);
             border-radius: 4px;
             border-left: 3px solid var(--primary);
@@ -394,9 +406,7 @@
         .step-number {
             flex-shrink: 0;
             width: 22px;
-            /* Reduced size */
             height: 22px;
-            /* Reduced size */
             background: var(--primary);
             color: white;
             border-radius: 50%;
@@ -405,7 +415,6 @@
             justify-content: center;
             font-weight: 700;
             font-size: 0.65rem;
-            /* Reduced font size */
         }
 
         .step-content h4 {
@@ -413,40 +422,31 @@
             color: var(--text-main);
             margin-bottom: 0.1rem;
             font-size: 0.75rem;
-            /* Reduced font size */
         }
 
         .step-content p {
             color: var(--text-muted);
             margin-bottom: 0;
             font-size: 0.65rem;
-            /* Reduced font size */
         }
 
         .specs-list {
             background: var(--bg-light);
             border-radius: 6px;
             padding: 0.5rem 0.75rem;
-            /* Reduced padding */
             margin: 0.4rem 0;
-            /* Reduced margin */
         }
 
         .specs-list li {
             margin-bottom: 0.15rem;
-            /* Reduced margin */
             font-size: 0.7rem;
-            /* Reduced font size */
         }
 
         .page-footer {
             position: absolute;
             bottom: 8mm;
-            /* Reduced bottom position */
-            left: 15mm;
-            /* Adjusted left position */
-            right: 15mm;
-            /* Adjusted right position */
+            left: 8mm;
+            right: 8mm;
             padding-top: 0.5rem;
             border-top: 1px solid var(--border);
             display: flex;
@@ -456,21 +456,26 @@
 
         .footer-logo {
             height: 20px;
-            /* Reduced logo size */
         }
 
         .footer-text {
             color: var(--text-muted);
             font-size: 0.6rem;
-            /* Reduced font size */
             text-align: right;
         }
 
         .page-number {
             color: var(--text-muted);
             font-size: 0.65rem;
-            /* Reduced font size */
             font-weight: 600;
+        }
+        
+        /* 标签内容居中样式 */
+        .label-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
         }
     </style>
 </head>
@@ -567,7 +572,7 @@
 
         <div class="page-footer">
             <img src="assets/allport-pacd-logo.png" alt="Allport PACD" class="footer-logo">
-            <span class="page-number">Page 1 of 4</span>
+            <span class="page-number">Page 1 of 5</span>
             <div class="footer-text">Version 1.1 | February 2026</div>
         </div>
     </div>
@@ -598,7 +603,7 @@
 
         <div class="page-footer">
             <img src="assets/allport-pacd-logo.png" alt="Allport PACD" class="footer-logo">
-            <span class="page-number">Page 2 of 4</span>
+            <span class="page-number">Page 2 of 5</span>
             <div class="footer-text">Version 1.1 | February 2026</div>
         </div>
     </div>
@@ -617,23 +622,130 @@
                 <img src="assets/INPUTS.png" alt="Application Input Form" class="instructions-image"
                     style="width: 45%; display: inline-block;">
             </div>
-
-
         </section>
-
-
 
         <div class="page-footer">
             <img src="assets/allport-pacd-logo.png" alt="Allport PACD" class="footer-logo">
-            <span class="page-number">Page 3 of 4</span>
+            <span class="page-number">Page 3 of 5</span>
             <div class="footer-text">Version 1.1 | February 2026</div>
         </div>
     </div>
 
+    <!-- PAGE 4 - NEW: Dual A5 Labels Page -->
+    <div class="label-page" id="page4">
+        <div class="label-container">
+            <!-- LEFT LABEL -->
+            <div class="label-a5">
+                <div class="label-content">
+                    <div>
+                        <header class="manual-header">
+                            <div class="header-content">
+                                <div class="header-text">
+                                    <h1>Matalan Shipping Label</h1>
+                                    <p>Label Template - Left</p>
+                                </div>
+                                <div class="header-logo">
+                                    <img src="assets/allport-pacd-logo.png" alt="Allport PACD Logo"
+                                        style="background: white; padding: 5px; border-radius: 4px; height: 30px;">
+                                </div>
+                            </div>
+                        </header>
 
+                        <section class="section">
+                            <h2 class="section-title">
+                                <span class="section-number">A</span>
+                                Sample Label Content
+                            </h2>
+                            <p>This is a sample A5 shipping label. Actual content would come from the generator application.</p>
+                            
+                            <div class="size-decision-box">
+                                <div class="size-options">
+                                    <div class="size-option a5">
+                                        <span class="size-option-label">A5 Size</span>
+                                        <div class="size-option-dimension">210×148mm</div>
+                                        <p class="size-option-condition">Standard Matalan label format</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-box">
+                                <p><strong>Sample data:</strong> PO Number, SKU, Quantity, etc.</p>
+                            </div>
+                        </section>
+                        
+                        <section class="section">
+                            <h3>Delivery Details</h3>
+                            <p><strong>Store:</strong> [Store Name]</p>
+                            <p><strong>Address:</strong> [Delivery Address]</p>
+                            <p><strong>Date:</strong> [Dispatch Date]</p>
+                        </section>
+                    </div>
+                    
+                    <div class="page-footer">
+                        <span class="page-number">Left Label</span>
+                        <div class="footer-text">A5 Format</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RIGHT LABEL -->
+            <div class="label-a5">
+                <div class="label-content">
+                    <div>
+                        <header class="manual-header">
+                            <div class="header-content">
+                                <div class="header-text">
+                                    <h1>Matalan Shipping Label</h1>
+                                    <p>Label Template - Right</p>
+                                </div>
+                                <div class="header-logo">
+                                    <img src="assets/allport-pacd-logo.png" alt="Allport PACD Logo"
+                                        style="background: white; padding: 5px; border-radius: 4px; height: 30px;">
+                                </div>
+                            </div>
+                        </header>
 
-    <!-- PAGE 4 -->
-    <div class="a4-page" id="page4">
+                        <section class="section">
+                            <h2 class="section-title">
+                                <span class="section-number">B</span>
+                                Sample Label Content
+                            </h2>
+                            <p>This is a sample A5 shipping label. Actual content would come from the generator application.</p>
+                            
+                            <div class="size-decision-box">
+                                <div class="size-options">
+                                    <div class="size-option a5">
+                                        <span class="size-option-label">A5 Size</span>
+                                        <div class="size-option-dimension">210×148mm</div>
+                                        <p class="size-option-condition">Standard Matalan label format</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-box">
+                                <p><strong>Sample data:</strong> PO Number, SKU, Quantity, etc.</p>
+                            </div>
+                        </section>
+                        
+                        <section class="section">
+                            <h3>Delivery Details</h3>
+                            <p><strong>Store:</strong> [Store Name]</p>
+                            <p><strong>Address:</strong> [Delivery Address]</p>
+                            <p><strong>Date:</strong> [Dispatch Date]</p>
+                        </section>
+                    </div>
+                    
+                    <div class="page-footer">
+                        <span class="page-number">Right Label</span>
+                        <div class="footer-text">A5 Format</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 5 -->
+    <div class="a4-page" id="page5">
         <!-- Section 4: Special Classifications -->
         <section class="section">
             <h2 class="section-title">
@@ -711,7 +823,7 @@
 
         <div class="page-footer">
             <img src="assets/allport-pacd-logo.png" alt="Allport PACD" class="footer-logo">
-            <span class="page-number">Page 4 of 4</span>
+            <span class="page-number">Page 4 of 5</span>
             <div class="footer-text">Version 1.1 | February 2026</div>
         </div>
     </div>
@@ -767,7 +879,7 @@
                 });
                 pdf.addImage(canvas3.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 210, 297);
 
-                // Page 4
+                // Page 4 (Dual Labels)
                 pdf.addPage();
                 const page4 = document.getElementById('page4');
                 const canvas4 = await html2canvas(page4, {
@@ -779,6 +891,19 @@
                     height: page4.offsetHeight
                 });
                 pdf.addImage(canvas4.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 210, 297);
+
+                // Page 5
+                pdf.addPage();
+                const page5 = document.getElementById('page5');
+                const canvas5 = await html2canvas(page5, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff',
+                    width: page5.offsetWidth,
+                    height: page5.offsetHeight
+                });
+                pdf.addImage(canvas5.toDataURL('image/jpeg', 0.95), 'JPEG', 0, 0, 210, 297);
 
                 pdf.save('instruction.pdf');
 
