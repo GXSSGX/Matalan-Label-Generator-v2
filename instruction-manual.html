@@ -631,62 +631,80 @@
         </div>
     </div>
 
-    <!-- PAGE 4 - NEW: Dual A5 Labels Page -->
-    <div class="label-page" id="page4">
-        <div class="label-container">
-            <!-- LEFT LABEL -->
-            <div class="label-a5">
-                <div class="label-content">
-                    <div>
-                        <header class="manual-header">
-                            <div class="header-content">
-                                <div class="header-text">
-                                    <h1>Matalan Shipping Label</h1>
-                                    <p>Label Template - Left</p>
-                                </div>
-                                <div class="header-logo">
-                                    <img src="assets/allport-pacd-logo.png" alt="Allport PACD Logo"
-                                        style="background: white; padding: 5px; border-radius: 4px; height: 30px;">
-                                </div>
-                            </div>
-                        </header>
+   <!-- PAGE 4 - PERFECTLY SYMMETRIC DUAL A5 LABELS -->
+<div class="a4-page" id="page4" style="padding: 0; margin: 0; display: flex; flex-direction: column; height: 297mm;">
+  <!-- TOP LABEL: 精确位置 -->
+  <div class="label-a5" style="
+    width: 210mm;
+    height: 148mm;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    padding: 8mm;
+    margin-bottom: 2mm; /* 关键：2mm裁切间隙 */
+    flex-shrink: 0;
+  ">
+    <!-- 内容：严格与底部标签对齐 -->
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12mm;">
+      <div style="font-size: 0.8rem; font-weight: 600; color: #333; line-height: 1.4;">PO NUMBER</div>
+      <div style="font-size: 0.8rem; font-weight: 600; color: #333; text-align: right; line-height: 1.4;">STYLE REF</div>
+    </div>
 
-                        <section class="section">
-                            <h2 class="section-title">
-                                <span class="section-number">A</span>
-                                Sample Label Content
-                            </h2>
-                            <p>This is a sample A5 shipping label. Actual content would come from the generator application.</p>
-                            
-                            <div class="size-decision-box">
-                                <div class="size-options">
-                                    <div class="size-option a5">
-                                        <span class="size-option-label">A5 Size</span>
-                                        <div class="size-option-dimension">210×148mm</div>
-                                        <p class="size-option-condition">Standard Matalan label format</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="info-box">
-                                <p><strong>Sample data:</strong> PO Number, SKU, Quantity, etc.</p>
-                            </div>
-                        </section>
-                        
-                        <section class="section">
-                            <h3>Delivery Details</h3>
-                            <p><strong>Store:</strong> [Store Name]</p>
-                            <p><strong>Address:</strong> [Delivery Address]</p>
-                            <p><strong>Date:</strong> [Dispatch Date]</p>
-                        </section>
-                    </div>
-                    
-                    <div class="page-footer">
-                        <span class="page-number">Left Label</span>
-                        <div class="footer-text">A5 Format</div>
-                    </div>
-                </div>
-            </div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">SUPPLIER NAME</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">FACTORY NAME</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">LINE CODE NUMBER</div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 4mm; line-height: 1.4;">
+      <div style="font-size: 0.8rem; font-weight: 600; color: #333;">PACK ID</div>
+      <div style="font-size: 0.8rem; font-weight: 600; color: #333;">BOX QUANTITY</div>
+    </div>
+
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">CARTON DIMENSION</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">GROSS WEIGHT (KG)</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">COLOR</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">PRODUCT DESCRIPTION</div>
+
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 2mm; line-height: 1.4;">SIZE</div>
+    <div style="border: 1px solid #000; height: 12mm; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="text-align: center; font-weight: 600; font-size: 0.8rem;">Size</div>
+      <div style="text-align: center; font-size: 0.7rem; margin-top: 2px;">-</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM LABEL: 与上方完全镜像 -->
+  <div class="label-a5" style="
+    width: 210mm;
+    height: 148mm;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    padding: 8mm;
+    flex-shrink: 0;
+  ">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12mm;">
+      <div style="font-size: 0.8rem; font-weight: 600; color: #333; line-height: 1.4;">PO NUMBER</div>
+      <div style="font-size: 0.8rem; font-weight: 600; color: #333; text-align: right; line-height: 1.4;">STYLE REF</div>
+    </div>
+
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">SUPPLIER NAME</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">FACTORY NAME</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">LINE CODE NUMBER</div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 4mm; line-height: 1.4;">
+      <div style="font-size: 0.8rem; font-weight: 600; color: #333;">PACK ID</div>
+      <div style="font-size: 0.8rem; font-weight: 600; color: #333;">BOX QUANTITY</div>
+    </div>
+
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">CARTON DIMENSION</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">GROSS WEIGHT (KG)</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">COLOR</div>
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 4mm; line-height: 1.4;">PRODUCT DESCRIPTION</div>
+
+    <div style="font-size: 0.8rem; font-weight: 600; color: #333; margin-bottom: 2mm; line-height: 1.4;">SIZE</div>
+    <div style="border: 1px solid #000; height: 12mm; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="text-align: center; font-weight: 600; font-size: 0.8rem;">Size</div>
+      <div style="text-align: center; font-size: 0.7rem; margin-top: 2px;">-</div>
+    </div>
+  </div>
+</div>
             
             <!-- RIGHT LABEL -->
             <div class="label-a5">
